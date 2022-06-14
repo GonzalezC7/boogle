@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boogle</title>
+  <link rel="stylesheet" href="./style.css" type="text/css" />
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <div id="root">
+    <img src="https://www.google.fr/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Logo Boogle" />
+
+    <div v-if="!result" class="search-bar">
+      <input :value="search" @input="findSuggestionsFromSearch" type="text" name="search" />
+      <ul v-if="suggestions.length > 0" class="suggestions">
+        <li @click="selectSuggestion(suggestion)" v-for="suggestion in suggestions">
+          {{ suggestion }}
+        </li>
+      </ul>
+      <button type="button">Rechercher</button>
+    </div>
+
+    <p v-else>{{ result }}</p>
+
+  </div>
+
+  <script src="./app.js" type="text/javascript"></script>
+</body>
+</html>
